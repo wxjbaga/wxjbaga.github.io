@@ -152,6 +152,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/19/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/19/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2022-09-19T11:18:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第三章-类和对象"><a href="#第三章-类和对象" class="headerlink" title="第三章 类和对象"></a>第三章 类和对象</h2><p>1 类<br>&lt;类的属性和方法&gt;<br>  类的属性和方法都是定义在类体中的。类的属性就是类的成员变量，如果不给成员变量赋初值，那么系统会给其赋默认值，int类型的变量的默认值是0，boolean类型变量的默认值是false，引用型变量的默认值是NULL。方法实际上就相当于c++语言中的成员函数，由类对象来调用，方法体中定义的变量是局部变量，局部变量没有默认值，需要给他赋初值。<br>&lt;类的构造方法&gt;<br>  构造方法也即构造函数，构造方法的方法名字和类名相同并且构造方法没有返回值，如果程序中没有关于该类构造方法的定义，那么系统会为该类生成一个默认的构造函数生成一个默认的构造方法，如果该类给定了构造方法，那么程序不再为该类生成默认的构造方法，Java中的构造方法和c++中的默认构造函数是类似的，c++中如果没有显式给定该类默认构造函数，那么系统会为该类生成一个默认的构造函数。两种语言有共同的特点，结合起来学可能效果好一点。构造方法一般在创建对象时，用new操作符来调用。<br>（一段关于Java类的构造方法）<br>  3.1.1<br>  public class Student<br>  {<br>    &#x2F;&#x2F;定义成员变量<br>    String no;<br>    String name;<br>    int age;<br>    int score1,score2;<br>    &#x2F;&#x2F;定义有参数的构造方法<br>    public Student(String no,String name,int score1,int score2)<br>    {<br>      this.no&#x3D;”no”;<br>      this.name&#x3D;”name”;<br>      this.score&#x3D;score1;<br>      this.score2&#x3D;score2;<br>    }<br>    &#x2F;&#x2F;定义无参的构造方法<br>    public Student(){}<br>    int sum()<br>    {<br>      return score1+score2;<br>    }<br>  }<br>    这个this是什么意思?与c++中的this是类似的，表示当前调用方法的对象。this一种特殊的用法，在一个构造方法中用this调用另一个构造方法。构造方法一般在创建对象时用new操作符调用，虽然Java和c++都是面向对象的高级语言，Java中的构造方法和c++中的默认构造函数有想通之处，但是也存在着差异，java中的构造方法可以重载而c++中的默认构造函数不能重载。<br>  &lt;java中构造方法的重载代码&gt;<br>  3.1.2<br>  public class Rectangle<br>  {<br>    &#x2F;&#x2F;成员属性<br>    double length;<br>    double width;<br>    &#x2F;&#x2F;无参的构造方法<br>    public Rectangle(){}<br>    &#x2F;&#x2F;有参的构造方法<br>    public Rectangle(double length)&#x2F;&#x2F;参数个数不同<br>    {<br>      this.length&#x3D;length;<br>    }<br>    public Rectangle(double length,double width)<br>    {<br>      this.length&#x3D;length;<br>      this.width&#x3D;width;<br>    }<br>  }<br> &lt;类的继承&gt;<br>  在java中定义的每个类都是直接或者间接地继承java.lang.Object得到的<br>  继承的关键字：extends<br>  继承的格式：<br>  class a(子类名) extends b(父类名)<br>  {<br>    &#x2F;&#x2F;类体<br>  }<br>  3.1.3<br>  public class Person<br>  {<br>    &#x2F;&#x2F;定义成员变量<br>    private String id;<br>    private String name;<br>    private int age;<br>    &#x2F;&#x2F;定义构造方法<br>    public Person(String id，String name,int age)<br>    {<br>      this.id&#x3D;id;<br>      this.name&#x3D;name;<br>      this.age&#x3D;age;<br>    }<br>  }<br>  (一段关于继承的代码)<br>   3.1.4<br>   class student extends Person<br>   {<br>     &#x2F;&#x2F;定义成员变量<br>     String num;<br>     int score1,score2;<br>     int sum()<br>     {<br>       return score1+score1;<br>     }<br>     public student()<br>     {<br>       System.out.println(“子类的构造方法”);<br>     }<br>   }<br>   关于继承，子类中只包含了和父类中不同的成员变量或者方法，有了继承之后，我们在设计类的时候，在父类中设置基本的成员变量和方法，在派生类中根据需要扩展成员变量或者方法，当子类中的方法和父类中的方法重复时，子类中会自动覆盖父类中的方法。除extends关键字外，在继承中还有一个关键字：Super。我们知道，当我们在子类中重写了父类的方法之后，在子类中无法访问父类被覆盖的方法，Super解决了这个问题，<br> &lt;类对象的创建和使用&gt;<br>  使用了3.1.1中的sum函数<br>  3.1.5<br>   class<br>   {<br>     public static void main(String []args)<br>     {<br>       Student s;&#x2F;&#x2F;声明学生对象<br>       s&#x3D;new Student();&#x2F;&#x2F;调用无参构造方法<br>       s.no&#x3D;”202185010028”;&#x2F;&#x2F;设置对象s的成员变量<br>       s.name&#x3D;”wxj”;&#x2F;&#x2F;设置对象s的成员变量<br>       s.age&#x3D;19;<br>       s.sayHello();&#x2F;&#x2F;s对象调用成员方法<br>       &#x2F;&#x2F;调用有参构造方法创建学生对象，Student中的参数有先后次序，对应有参构造方法中的形参<br>       Student o&#x3D;new Student(“202185010000”,”coco”,19,90,90);<br>       System.out.println(“coco的总成绩是：”+o.sum());&#x2F;&#x2F;这里的sum函数没有参数<br>     }<br>   }</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/19/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-linux笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
